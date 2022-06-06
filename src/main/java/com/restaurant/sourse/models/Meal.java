@@ -2,6 +2,7 @@ package com.restaurant.sourse.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "meal")
@@ -21,7 +22,7 @@ public class Meal {
     @JoinTable(name = "meal_ingredients",
             joinColumns = @JoinColumn(name = "main_id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-    private List<Ingredient> ingredients;
+    private Set<Ingredient> ingredients;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "meal_pictures",
@@ -49,7 +50,7 @@ public class Meal {
     public Meal() {
     }
 
-    public Meal(long id, String name, double price, List<Ingredient> ingredients, List<FileStorage> pictures, Type type, SpecialType specialType, long preparationTime, boolean isAvailable, String description) {
+    public Meal(long id, String name, double price, Set<Ingredient> ingredients, List<FileStorage> pictures, Type type, SpecialType specialType, long preparationTime, boolean isAvailable, String description) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -86,11 +87,11 @@ public class Meal {
         this.price = price;
     }
 
-    public List<Ingredient> getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

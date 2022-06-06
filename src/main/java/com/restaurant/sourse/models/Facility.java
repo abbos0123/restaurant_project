@@ -18,7 +18,9 @@ public class Facility {
     private String info;
 
     @ManyToOne
-    @Column(name = "location")
+    @JoinTable(name = "facility_location",
+    joinColumns = @JoinColumn(name = "facility_id"),
+    inverseJoinColumns = @JoinColumn(name = "location_id"))
     private Location location;
 
     public Facility() {
