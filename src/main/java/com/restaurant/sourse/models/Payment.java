@@ -24,16 +24,21 @@ public class Payment {
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
 
+    @Column(name = "amount")
+    private double amount;
+
     public Payment() {
     }
 
-    public Payment(long id, String data, LocalDate time, boolean isSuccessful, PaymentType paymentType) {
+    public Payment(long id, String data, LocalDate time, boolean isSuccessful, PaymentType paymentType, double amount) {
         this.id = id;
         this.data = data;
         this.time = time;
         this.isSuccessful = isSuccessful;
         this.paymentType = paymentType;
+        this.amount= amount;
     }
+
 
     public long getId() {
         return id;
@@ -75,6 +80,14 @@ public class Payment {
         this.paymentType = paymentType;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     @Override
     public String toString() {
         return "Payment{" +
@@ -83,6 +96,7 @@ public class Payment {
                 ", time=" + time +
                 ", isSuccessful=" + isSuccessful +
                 ", paymentType=" + paymentType +
+                ", amount=" + amount +
                 '}';
     }
 }
